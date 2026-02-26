@@ -19,7 +19,7 @@ const typeOptions: { value: ContentType; label: string; icon: typeof FileText }[
 ];
 
 export default function AddMemoryModal({ isOpen, onClose, onAdd }: AddMemoryModalProps) {
-  const [type, setType] = useState<MemoryType>('note');
+  const [type, setType] = useState<ContentType>('note');
   const [title, setTitle] = useState('');
   const [summary, setSummary] = useState('');
   const [content, setContent] = useState('');

@@ -89,11 +89,6 @@ const sampleMemories: MemoryItem[] = [
   },
 ];
 
-export const metadata = {
-  title: 'Memory Bank | George & PreachBot',
-  description: 'Search and archive your knowledge',
-};
-
 export default function MemoryPage() {
   const [memories, setMemories] = useState<MemoryItem[]>(sampleMemories);
   const [searchTerm, setSearchTerm] = useState('');

@@ -22,7 +22,6 @@ export default function AddMemoryModal({ isOpen, onClose, onAdd }: AddMemoryModa
   const [type, setType] = useState<ContentType>('note');
   const [title, setTitle] = useState('');
   const [summary, setSummary] = useState('');
-  const [content, setContent] = useState('');
   const [url, setUrl] = useState('');
   const [keyPoints, setKeyPoints] = useState('');
   const [tags, setTags] = useState('');
@@ -39,7 +38,6 @@ export default function AddMemoryModal({ isOpen, onClose, onAdd }: AddMemoryModa
       type,
       title,
       summary,
-      content: content || undefined,
       url: url || undefined,
       keyPoints: keyPoints
         .split('\n')
@@ -56,7 +54,6 @@ export default function AddMemoryModal({ isOpen, onClose, onAdd }: AddMemoryModa
     // Reset form
     setTitle('');
     setSummary('');
-    setContent('');
     setUrl('');
     setKeyPoints('');
     setTags('');
@@ -146,20 +143,6 @@ export default function AddMemoryModal({ isOpen, onClose, onAdd }: AddMemoryModa
               rows={3}
               className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none"
               required
-            />
-          </div>
-
-          {/* Content (optional) */}
-          <div>
-            <label className="block text-sm font-medium text-white/80 mb-2">
-              Full Content (optional)
-            </label>
-            <textarea
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              placeholder="Detailed notes, transcript, or full text..."
-              rows={4}
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none"
             />
           </div>
 

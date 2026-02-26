@@ -1,7 +1,7 @@
 'use client';
 
 import { FileText, Video, MessageSquare, Code, FileCode, ExternalLink, Calendar, Tag as TagIcon } from 'lucide-react';
-import { MemoryItem } from '../page';
+import { MemoryItem } from '../types';
 
 type ContentCardProps = {
   item: MemoryItem;

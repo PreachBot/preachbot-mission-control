@@ -6,21 +6,7 @@ import Link from 'next/link';
 import ContentCard from './components/ContentCard';
 import SearchBar from './components/SearchBar';
 import FilterBar from './components/FilterBar';
-
-export type ContentType = 'article' | 'video' | 'conversation' | 'code' | 'note';
-
-export type MemoryItem = {
-  id: string;
-  type: ContentType;
-  title: string;
-  summary: string;
-  keyPoints: string[];
-  url?: string;
-  tags: string[];
-  date: string;
-  importance: 'low' | 'medium' | 'high';
-  relatedProjects?: string[];
-};
+import { ContentType, MemoryItem } from './types';
 
 const sampleMemories: MemoryItem[] = [
   {

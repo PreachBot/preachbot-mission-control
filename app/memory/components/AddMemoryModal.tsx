@@ -2,15 +2,15 @@
 
 import { useState } from 'react';
 import { X, FileText, Video, MessageSquare, Code, BookOpen } from 'lucide-react';
-import { Memory, MemoryType } from '../page';
+import { ContentType, MemoryItem } from '../types';
 
 type AddMemoryModalProps = {
   isOpen: boolean;
   onClose: () => void;
-  onAdd: (memory: Omit<Memory, 'id' | 'date'>) => void;
+  onAdd: (memory: Omit<MemoryItem, 'id' | 'date'>) => void;
 };
 
-const typeOptions: { value: MemoryType; label: string; icon: typeof FileText }[] = [
+const typeOptions: { value: ContentType; label: string; icon: typeof FileText }[] = [
   { value: 'article', label: 'Article', icon: FileText },
   { value: 'video', label: 'Video', icon: Video },
   { value: 'conversation', label: 'Conversation', icon: MessageSquare },

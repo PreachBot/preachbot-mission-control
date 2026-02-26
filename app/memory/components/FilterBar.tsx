@@ -1,7 +1,7 @@
 'use client';
 
 import { FileText, Video, MessageSquare, Code, FileCode, Tag as TagIcon } from 'lucide-react';
-import { ContentType } from '../page';
+import { ContentType } from '../types';
 
 type FilterBarProps = {
   selectedType: ContentType | 'all';

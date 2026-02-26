@@ -149,20 +149,20 @@ export default function Card({ card, isDragging, onDelete, onEdit }: CardProps) 
         <div {...attributes} {...listeners} className="cursor-grab active:cursor-grabbing touch-none">
           <GripVertical className="w-5 h-5 text-white/40 hover:text-white/60" />
         </div>
-        <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="flex gap-1 opacity-70 group-hover:opacity-100 transition-opacity">
           <button
             onClick={() => setIsEditing(true)}
-            className="p-1 hover:bg-blue-500/20 rounded"
+            className="p-1 hover:bg-blue-500/20 rounded transition-colors"
             title="Edit card"
           >
-            <Edit2 className="w-4 h-4 text-blue-400" />
+            <Edit2 className="w-4 h-4 text-blue-400 hover:text-blue-300" />
           </button>
           <button
             onClick={() => onDelete && onDelete(card.id)}
-            className="p-1 hover:bg-red-500/20 rounded"
+            className="p-1 hover:bg-red-500/20 rounded transition-colors"
             title="Delete card"
           >
-            <Trash2 className="w-4 h-4 text-red-400" />
+            <Trash2 className="w-4 h-4 text-red-400 hover:text-red-300" />
           </button>
         </div>
       </div>

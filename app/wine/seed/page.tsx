@@ -157,12 +157,12 @@ export default function SeedWines() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 via-purple-50 to-pink-50 flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4 font-[family-name:var(--font-raleway)]" style={{ backgroundColor: '#fdf5e6' }}>
       <div className="bg-white rounded-lg shadow-xl p-8 max-w-md text-center">
         {seeded ? (
           <>
             <div className="text-6xl mb-4">🍷✅</div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">
+            <h1 className="text-2xl font-bold text-gray-900 mb-2 font-[family-name:var(--font-bodoni)]">
               Wine Collection Seeded!
             </h1>
             <p className="text-gray-600 mb-6">
@@ -186,7 +186,7 @@ export default function SeedWines() {
         ) : (
           <>
             <div className="text-6xl mb-4 animate-pulse">🍷</div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">
+            <h1 className="text-2xl font-bold text-gray-900 mb-2 font-[family-name:var(--font-bodoni)]">
               Seeding Your Collection...
             </h1>
             <p className="text-gray-600">Adding your favorite wines...</p>

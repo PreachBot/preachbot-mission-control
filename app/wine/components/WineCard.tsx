@@ -49,7 +49,7 @@ export default function WineCard({ wine, onUpdate }: WineCardProps) {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow font-[family-name:var(--font-raleway)]">
       {/* Photo */}
       {wine.photo && (
         <div className="relative h-64 bg-gray-100">
@@ -74,7 +74,7 @@ export default function WineCard({ wine, onUpdate }: WineCardProps) {
         {/* Header */}
         <div className="mb-3">
           <div className="flex items-start justify-between gap-2 mb-2">
-            <h3 className="text-xl font-bold text-gray-900 leading-tight">
+            <h3 className="text-xl font-bold text-gray-900 leading-tight font-[family-name:var(--font-bodoni)]">
               {wine.name}
             </h3>
             <span className={`px-2 py-1 rounded text-xs font-semibold whitespace-nowrap ${getTypeColor(wine.type)}`}>
@@ -157,7 +157,7 @@ export default function WineCard({ wine, onUpdate }: WineCardProps) {
               ? 'bg-green-100 text-green-700 border border-green-300'
               : 'bg-gray-100 text-gray-500 border border-gray-300'
           }`}>
-            {wine.wouldBuyAgain ? '✓ Would Buy Again' : '✗ Pass'}
+            {wine.wouldBuyAgain ? '🤙 Would Buy Again' : '✗ Pass'}
           </div>
         </div>
       </div>

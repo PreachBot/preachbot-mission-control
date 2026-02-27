@@ -136,10 +136,10 @@ export default function AddWineModal({ isOpen, onClose, onAdd }: AddWineModalPro
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 overflow-y-auto">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 overflow-y-auto font-[family-name:var(--font-raleway)]">
       <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full my-8">
         <div className="p-6 border-b border-gray-200">
-          <h2 className="text-2xl font-bold text-gray-900">Add Wine to Journal</h2>
+          <h2 className="text-2xl font-bold text-gray-900 font-[family-name:var(--font-bodoni)]">Add Wine to Journal</h2>
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-4 max-h-[70vh] overflow-y-auto">
@@ -406,7 +406,7 @@ export default function AddWineModal({ isOpen, onClose, onAdd }: AddWineModalPro
                   className="w-4 h-4 text-green-500 focus:ring-2 focus:ring-green-500"
                 />
                 <span className="text-sm font-semibold text-gray-700">
-                  ✓ Would buy again
+                  🤙 Would buy again
                 </span>
               </label>
             </div>

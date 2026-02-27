@@ -1,8 +1,18 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Bodoni_Moda, Raleway } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+const bodoniModa = Bodoni_Moda({ 
+  subsets: ["latin"],
+  variable: '--font-bodoni',
+  display: 'swap',
+});
+const raleway = Raleway({ 
+  subsets: ["latin"],
+  variable: '--font-raleway',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: "Mission Control | George & PreachBot",
@@ -16,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} ${bodoniModa.variable} ${raleway.variable}`}>{children}</body>
     </html>
   );
 }

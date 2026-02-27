@@ -90,14 +90,14 @@ export default function WineJournal() {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#fdf5e6' }}>
+    <div className="min-h-screen font-[family-name:var(--font-raleway)]" style={{ backgroundColor: '#fdf5e6' }}>
       {/* Header */}
       <div className="text-white shadow-lg" style={{ background: 'linear-gradient(to right, #5c0a1e, #8b0000)' }}>
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h1 className="text-4xl font-bold mb-2">🍷 Wine Journal</h1>
-              <p className="text-red-100">Your personal wine tasting collection</p>
+              <h1 className="text-4xl font-bold mb-2 font-[family-name:var(--font-bodoni)]">🍷 Wine Journal</h1>
+              <p className="text-red-100 font-light">Your personal wine tasting collection</p>
             </div>
             <button
               onClick={() => setIsModalOpen(true)}

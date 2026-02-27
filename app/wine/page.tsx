@@ -90,9 +90,9 @@ export default function WineJournal() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 via-purple-50 to-pink-50">
+    <div className="min-h-screen" style={{ backgroundColor: '#fdf5e6' }}>
       {/* Header */}
-      <div className="bg-gradient-to-r from-red-600 to-purple-600 text-white shadow-lg">
+      <div className="text-white shadow-lg" style={{ background: 'linear-gradient(to right, #5c0a1e, #8b0000)' }}>
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="flex items-center justify-between mb-6">
             <div>
@@ -152,7 +152,8 @@ export default function WineJournal() {
                 placeholder="🔍 Search wines, producers, regions, grapes..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none"
+                style={{ '--tw-ring-color': '#c9a84c' } as React.CSSProperties}
               />
             </div>
 
@@ -161,7 +162,8 @@ export default function WineJournal() {
               <select
                 value={typeFilter}
                 onChange={(e) => setTypeFilter(e.target.value as WineType | 'all')}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none"
+                style={{ '--tw-ring-color': '#c9a84c' } as React.CSSProperties}
               >
                 <option value="all">All Types</option>
                 <option value="red">🍷 Red</option>
@@ -176,7 +178,8 @@ export default function WineJournal() {
               <select
                 value={ratingFilter}
                 onChange={(e) => setRatingFilter(e.target.value === 'all' ? 'all' : Number(e.target.value))}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none"
+                style={{ '--tw-ring-color': '#c9a84c' } as React.CSSProperties}
               >
                 <option value="all">All Ratings</option>
                 <option value="5">⭐⭐⭐⭐⭐ 5 Stars</option>
@@ -190,7 +193,8 @@ export default function WineJournal() {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as 'date' | 'rating' | 'name')}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none"
+                style={{ '--tw-ring-color': '#c9a84c' } as React.CSSProperties}
               >
                 <option value="date">Sort: Newest First</option>
                 <option value="rating">Sort: Highest Rated</option>
@@ -234,7 +238,8 @@ export default function WineJournal() {
             {wines.length === 0 && (
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="px-8 py-3 bg-gradient-to-r from-red-600 to-purple-600 hover:from-red-700 hover:to-purple-700 text-white rounded-lg font-semibold shadow-lg"
+                className="px-8 py-3 text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all"
+                style={{ background: 'linear-gradient(to right, #5c0a1e, #c9a84c)' }}
               >
                 + Add Your First Wine
               </button>

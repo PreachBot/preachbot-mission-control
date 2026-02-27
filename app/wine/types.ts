@@ -16,6 +16,7 @@ export interface WineEntry {
   photo?: string;
   rating: number; // 1-5
   liked: boolean;
+  wouldBuyAgain: boolean; // Would buy again badge
   tastingNotes: string;
   location?: string; // Where you had it
   dateTasted: string;

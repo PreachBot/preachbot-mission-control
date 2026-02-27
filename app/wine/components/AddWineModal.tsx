@@ -30,6 +30,7 @@ export default function AddWineModal({ isOpen, onClose, onAdd }: AddWineModalPro
   const [dateTasted, setDateTasted] = useState(new Date().toISOString().split('T')[0]);
   const [rating, setRating] = useState(3);
   const [liked, setLiked] = useState(false);
+  const [wouldBuyAgain, setWouldBuyAgain] = useState(true);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -100,6 +101,7 @@ export default function AddWineModal({ isOpen, onClose, onAdd }: AddWineModalPro
       photo: photo || undefined,
       rating,
       liked,
+      wouldBuyAgain,
       tastingNotes: tastingNotes.trim(),
       location: location.trim() || undefined,
       dateTasted,
@@ -130,6 +132,7 @@ export default function AddWineModal({ isOpen, onClose, onAdd }: AddWineModalPro
     setDateTasted(new Date().toISOString().split('T')[0]);
     setRating(3);
     setLiked(false);
+    setWouldBuyAgain(true);
   };
 
   return (
@@ -191,7 +194,7 @@ export default function AddWineModal({ isOpen, onClose, onAdd }: AddWineModalPro
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none"
                 required
               />
             </div>
@@ -204,7 +207,7 @@ export default function AddWineModal({ isOpen, onClose, onAdd }: AddWineModalPro
                 type="text"
                 value={producer}
                 onChange={(e) => setProducer(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none"
               />
             </div>
 
@@ -217,7 +220,7 @@ export default function AddWineModal({ isOpen, onClose, onAdd }: AddWineModalPro
                 value={vintage}
                 onChange={(e) => setVintage(e.target.value)}
                 placeholder="e.g., 2021"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none"
               />
             </div>
 
@@ -230,7 +233,7 @@ export default function AddWineModal({ isOpen, onClose, onAdd }: AddWineModalPro
                 value={region}
                 onChange={(e) => setRegion(e.target.value)}
                 placeholder="e.g., Napa Valley"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none"
               />
             </div>
 
@@ -243,7 +246,7 @@ export default function AddWineModal({ isOpen, onClose, onAdd }: AddWineModalPro
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
                 placeholder="e.g., USA"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none"
               />
             </div>
 
@@ -254,7 +257,7 @@ export default function AddWineModal({ isOpen, onClose, onAdd }: AddWineModalPro
               <select
                 value={type}
                 onChange={(e) => setType(e.target.value as WineType)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none"
               >
                 <option value="red">Red</option>
                 <option value="white">White</option>
@@ -272,7 +275,7 @@ export default function AddWineModal({ isOpen, onClose, onAdd }: AddWineModalPro
                 value={grapes}
                 onChange={(e) => setGrapes(e.target.value)}
                 placeholder="e.g., Cabernet Sauvignon, Merlot"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none"
               />
             </div>
           </div>
@@ -288,7 +291,7 @@ export default function AddWineModal({ isOpen, onClose, onAdd }: AddWineModalPro
                 value={style}
                 onChange={(e) => setStyle(e.target.value)}
                 placeholder="e.g., Bold & Full-bodied"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none"
               />
             </div>
 
@@ -301,7 +304,7 @@ export default function AddWineModal({ isOpen, onClose, onAdd }: AddWineModalPro
                 value={priceRange}
                 onChange={(e) => setPriceRange(e.target.value)}
                 placeholder="e.g., $30-50"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none"
               />
             </div>
 
@@ -314,7 +317,7 @@ export default function AddWineModal({ isOpen, onClose, onAdd }: AddWineModalPro
                 value={foodPairings}
                 onChange={(e) => setFoodPairings(e.target.value)}
                 placeholder="e.g., Grilled steak, Aged cheese"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none"
               />
             </div>
           </div>
@@ -350,7 +353,7 @@ export default function AddWineModal({ isOpen, onClose, onAdd }: AddWineModalPro
                 onChange={(e) => setTastingNotes(e.target.value)}
                 placeholder="What did you taste? How was it?"
                 rows={3}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none"
               />
             </div>
 
@@ -363,7 +366,7 @@ export default function AddWineModal({ isOpen, onClose, onAdd }: AddWineModalPro
                   type="date"
                   value={dateTasted}
                   onChange={(e) => setDateTasted(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none"
                   required
                 />
               </div>
@@ -377,12 +380,12 @@ export default function AddWineModal({ isOpen, onClose, onAdd }: AddWineModalPro
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
                   placeholder="e.g., Home, Restaurant name"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none"
                 />
               </div>
             </div>
 
-            <div>
+            <div className="space-y-2">
               <label className="flex items-center gap-2">
                 <input
                   type="checkbox"
@@ -392,6 +395,18 @@ export default function AddWineModal({ isOpen, onClose, onAdd }: AddWineModalPro
                 />
                 <span className="text-sm font-semibold text-gray-700">
                   ❤️ Add to favorites
+                </span>
+              </label>
+              
+              <label className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  checked={wouldBuyAgain}
+                  onChange={(e) => setWouldBuyAgain(e.target.checked)}
+                  className="w-4 h-4 text-green-500 focus:ring-2 focus:ring-green-500"
+                />
+                <span className="text-sm font-semibold text-gray-700">
+                  ✓ Would buy again
                 </span>
               </label>
             </div>
@@ -412,7 +427,8 @@ export default function AddWineModal({ isOpen, onClose, onAdd }: AddWineModalPro
           </button>
           <button
             onClick={handleSubmit}
-            className="px-6 py-2 bg-gradient-to-r from-red-600 to-purple-600 hover:from-red-700 hover:to-purple-700 text-white rounded-lg font-medium"
+            className="px-6 py-2 text-white rounded-lg font-medium hover:shadow-lg transition-all"
+            style={{ background: 'linear-gradient(to right, #5c0a1e, #c9a84c)' }}
           >
             Add to Journal
           </button>

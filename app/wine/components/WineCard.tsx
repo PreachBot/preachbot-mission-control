@@ -136,7 +136,7 @@ export default function WineCard({ wine, onUpdate }: WineCardProps) {
             <p className="text-xs font-semibold text-gray-700 mb-1">Pairs with:</p>
             <div className="flex flex-wrap gap-1">
               {wine.foodPairings.map((pairing, idx) => (
-                <span key={idx} className="px-2 py-1 bg-purple-50 text-purple-700 rounded text-xs">
+                <span key={idx} className="px-2 py-1 rounded text-xs" style={{ backgroundColor: '#fef3e2', color: '#a67c00' }}>
                   {pairing}
                 </span>
               ))}
@@ -145,9 +145,20 @@ export default function WineCard({ wine, onUpdate }: WineCardProps) {
         )}
 
         {/* Footer */}
-        <div className="pt-3 border-t border-gray-200 text-xs text-gray-500 space-y-1">
-          <div>Tasted: {formatDate(wine.dateTasted)}</div>
-          {wine.location && <div>At: {wine.location}</div>}
+        <div className="pt-3 border-t border-gray-200 flex items-end justify-between">
+          <div className="text-xs text-gray-500 space-y-1">
+            <div>Tasted: {formatDate(wine.dateTasted)}</div>
+            {wine.location && <div>At: {wine.location}</div>}
+          </div>
+          
+          {/* Would Buy Again Badge */}
+          <div className={`px-2 py-1 rounded text-xs font-semibold ${
+            wine.wouldBuyAgain 
+              ? 'bg-green-100 text-green-700 border border-green-300'
+              : 'bg-gray-100 text-gray-500 border border-gray-300'
+          }`}>
+            {wine.wouldBuyAgain ? '✓ Would Buy Again' : '✗ Pass'}
+          </div>
         </div>
       </div>
     </div>

@@ -134,22 +134,47 @@ const seedWines = [
 
 export default function SeedWines() {
   const [seeded, setSeeded] = useState(false);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
-    // Check if already seeded
-    const existing = localStorage.getItem('wine-journal');
-    if (existing) {
-      const wines = JSON.parse(existing);
-      if (wines.length > 0) {
-        setSeeded(true);
-        return;
-      }
-    }
+    const seedData = async () => {
+      try {
+        // Check if server already has wines
+        const response = await fetch('/api/wine/add');
+        if (response.ok) {
+          const data = await response.json();
+          if (data.wines && data.wines.length > 0) {
+            setSeeded(true);
+            setLoading(false);
+            return;
+          }
+        }
 
-    // Seed the wines
-    localStorage.setItem('wine-journal', JSON.stringify(seedWines));
-    setSeeded(true);
+        // Seed each wine to the server
+        for (const wine of seedWines) {
+          await fetch('/api/wine/add', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(wine),
+          });
+        }
+
+        // Also save to localStorage as backup
+        localStorage.setItem('wine-journal', JSON.stringify(seedWines));
+        
+        setSeeded(true);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error seeding wines:', error);
+        // Fall back to localStorage only
+        localStorage.setItem('wine-journal', JSON.stringify(seedWines));
+        setSeeded(true);
+        setLoading(false);
+      }
+    };
+
+    seedData();
   }, []);
 
   const handleGoToJournal = () => {
@@ -159,7 +184,15 @@ export default function SeedWines() {
   return (
     <div className="min-h-screen flex items-center justify-center p-4 font-[family-name:var(--font-raleway)]" style={{ backgroundColor: '#fdf5e6' }}>
       <div className="bg-white rounded-lg shadow-xl p-8 max-w-md text-center">
-        {seeded ? (
+        {loading ? (
+          <>
+            <div className="text-6xl mb-4 animate-pulse">🍷</div>
+            <h1 className="text-2xl font-bold text-gray-900 mb-2 font-[family-name:var(--font-bodoni)]">
+              Seeding Your Collection...
+            </h1>
+            <p className="text-gray-600">Adding your favorite wines to the server...</p>
+          </>
+        ) : seeded ? (
           <>
             <div className="text-6xl mb-4">🍷✅</div>
             <h1 className="text-2xl font-bold text-gray-900 mb-2 font-[family-name:var(--font-bodoni)]">

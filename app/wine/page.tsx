@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { WineEntry, WineType } from './types';
-import { loadWines, addWine as saveWine } from './storage';
+import { loadWines, addWine as saveWineLocal } from './storage';
+import { fetchWines, addWineToServer, syncWinesWithServer } from './api-storage';
 import WineCard from './components/WineCard';
 import AddWineModal from './components/AddWineModal';
 
@@ -17,9 +18,33 @@ export default function WineJournal() {
   const [sortBy, setSortBy] = useState<'date' | 'rating' | 'name'>('date');
 
   useEffect(() => {
-    const loadedWines = loadWines();
-    setWines(loadedWines);
-    setFilteredWines(loadedWines);
+    const loadWinesData = async () => {
+      // Try to load from API first
+      const serverWines = await fetchWines();
+      
+      if (serverWines.length > 0) {
+        // Server has data - use it
+        setWines(serverWines);
+        setFilteredWines(serverWines);
+        // Also update localStorage as cache
+        saveWineLocal(serverWines[0]); // This will trigger localStorage update
+      } else {
+        // Fall back to localStorage
+        const localWines = loadWines();
+        setWines(localWines);
+        setFilteredWines(localWines);
+        
+        // If we have local wines, sync them to server
+        if (localWines.length > 0) {
+          syncWinesWithServer(localWines).then(synced => {
+            setWines(synced);
+            setFilteredWines(synced);
+          });
+        }
+      }
+    };
+    
+    loadWinesData();
   }, []);
 
   useEffect(() => {
@@ -68,13 +93,29 @@ export default function WineJournal() {
     setFilteredWines(filtered);
   }, [wines, searchQuery, typeFilter, ratingFilter, likedOnly, sortBy]);
 
-  const handleAddWine = (wine: WineEntry) => {
-    saveWine(wine);
-    setWines(loadWines());
+  const handleAddWine = async (wine: WineEntry) => {
+    // Save to server first
+    const success = await addWineToServer(wine);
+    
+    if (success) {
+      // Reload from server
+      const serverWines = await fetchWines();
+      setWines(serverWines);
+    } else {
+      // Fall back to localStorage
+      saveWineLocal(wine);
+      setWines(loadWines());
+    }
   };
 
-  const handleUpdate = () => {
-    setWines(loadWines());
+  const handleUpdate = async () => {
+    // Reload from server
+    const serverWines = await fetchWines();
+    if (serverWines.length > 0) {
+      setWines(serverWines);
+    } else {
+      setWines(loadWines());
+    }
   };
 
   const stats = {

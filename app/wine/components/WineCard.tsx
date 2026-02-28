@@ -2,6 +2,7 @@
 
 import { WineEntry } from '../types';
 import { updateWine } from '../storage';
+import { updateWineOnServer } from '../api-storage';
 
 interface WineCardProps {
   wine: WineEntry;
@@ -9,13 +10,21 @@ interface WineCardProps {
 }
 
 export default function WineCard({ wine, onUpdate }: WineCardProps) {
-  const toggleLike = () => {
-    updateWine(wine.id, { liked: !wine.liked });
+  const toggleLike = async () => {
+    const success = await updateWineOnServer(wine.id, { liked: !wine.liked });
+    if (!success) {
+      // Fallback to localStorage
+      updateWine(wine.id, { liked: !wine.liked });
+    }
     onUpdate();
   };
 
-  const toggleWouldBuyAgain = () => {
-    updateWine(wine.id, { wouldBuyAgain: !wine.wouldBuyAgain });
+  const toggleWouldBuyAgain = async () => {
+    const success = await updateWineOnServer(wine.id, { wouldBuyAgain: !wine.wouldBuyAgain });
+    if (!success) {
+      // Fallback to localStorage
+      updateWine(wine.id, { wouldBuyAgain: !wine.wouldBuyAgain });
+    }
     onUpdate();
   };
 

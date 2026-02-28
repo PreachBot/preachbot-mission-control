@@ -14,6 +14,11 @@ export default function WineCard({ wine, onUpdate }: WineCardProps) {
     onUpdate();
   };
 
+  const toggleWouldBuyAgain = () => {
+    updateWine(wine.id, { wouldBuyAgain: !wine.wouldBuyAgain });
+    onUpdate();
+  };
+
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr);
     return date.toLocaleDateString('en-US', { 
@@ -151,14 +156,18 @@ export default function WineCard({ wine, onUpdate }: WineCardProps) {
             {wine.location && <div>At: {wine.location}</div>}
           </div>
           
-          {/* Would Buy Again Badge */}
-          <div className={`px-2 py-1 rounded text-xs font-semibold ${
-            wine.wouldBuyAgain 
-              ? 'bg-green-100 text-green-700 border border-green-300'
-              : 'bg-gray-100 text-gray-500 border border-gray-300'
-          }`}>
-            {wine.wouldBuyAgain ? '🤙 Would Buy Again' : '✗ Pass'}
-          </div>
+          {/* Would Buy Again Badge - Clickable Toggle */}
+          <button
+            onClick={toggleWouldBuyAgain}
+            className={`px-2 py-1 rounded text-xs font-semibold transition-all cursor-pointer hover:shadow-md ${
+              wine.wouldBuyAgain 
+                ? 'bg-green-100 text-green-700 border border-green-300 hover:bg-green-200'
+                : 'bg-gray-100 text-gray-500 border border-gray-300 hover:bg-gray-200'
+            }`}
+            title="Click to toggle"
+          >
+            {wine.wouldBuyAgain ? '🤙 Would Buy Again' : '🤙 Would Buy Again?'}
+          </button>
         </div>
       </div>
     </div>

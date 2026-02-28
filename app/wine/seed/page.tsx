@@ -213,7 +213,7 @@ export default function SeedWines() {
               onClick={handleGoToJournal}
               className="px-6 py-3 bg-gradient-to-r from-red-600 to-purple-600 hover:from-red-700 hover:to-purple-700 text-white rounded-lg font-semibold shadow-lg"
             >
-              View Wine Journal →
+              View Preach Uncorked →
             </button>
           </>
         ) : (

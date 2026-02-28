@@ -137,8 +137,8 @@ export default function WineJournal() {
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h1 className="text-4xl font-bold mb-2 font-[family-name:var(--font-bodoni)]">🍷 Wine Journal</h1>
-              <p className="text-red-100 font-light">Your personal wine tasting collection</p>
+              <h1 className="text-4xl font-bold mb-2 font-[family-name:var(--font-bodoni)]">🍷 Preach Uncorked</h1>
+              <p className="text-red-100 font-light">Your AI-powered wine companion</p>
             </div>
             <button
               onClick={() => setIsModalOpen(true)}

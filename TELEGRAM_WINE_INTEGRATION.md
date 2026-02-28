@@ -1,4 +1,4 @@
-# 🍷 Telegram → Wine Journal Integration
+# 🍷 Telegram → Preach Uncorked Integration
 
 ## How It Works
 

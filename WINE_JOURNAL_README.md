@@ -1,8 +1,8 @@
-# 🍷 Wine Journal Setup
+# 🍷 Preach Uncorked
 
 ## What This Does
 
-The Wine Journal is an AI-powered wine tracking system that:
+**Preach Uncorked** is your AI-powered wine companion that:
 - Reads wine bottle labels using Claude's vision AI
 - Auto-extracts: name, producer, vintage, region, grapes, style, price
 - Lets you add personal ratings, tasting notes, and photos
@@ -26,7 +26,7 @@ Me: 🧠 Analyzing... Found: Louis M. Martini Napa Valley Cabernet Sauvignon 202
      Structured, full-bodied red from Napa Valley, CA. $25-35 range.
      How would you rate it? Any tasting notes?
 You: 5 stars. Bold tannins, dark fruit, perfect with steak
-Me: ✅ Added to your Wine Journal! 
+Me: ✅ Added to Preach Uncorked! 
      Total wines: 15 | View at http://localhost:3000/wine
 ```
 
